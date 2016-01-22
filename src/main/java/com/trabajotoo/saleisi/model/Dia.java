@@ -1,10 +1,26 @@
 package com.trabajotoo.saleisi.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "dia")
 public class Dia {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_dia")
 	private int id;
+	
+	@Column(name = "dia", length = 10)
 	private String dia;
-	private boolean estado;
+	
+	@Column(name = "estado")
+	private Boolean estado;
 	
 	public Dia(){}
 	

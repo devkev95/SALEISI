@@ -2,11 +2,29 @@ package com.trabajotoo.saleisi.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "ciclo")
 public class Ciclo {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_ciclo")
 	private int id;
+	
+	@Column(name = "fecha_inicio")
 	private Date fechaIni;
+	
+	@Column(name = "fecha_fin")
 	private Date fechaFin;
+	
+	@Column(name = "fecha_final_registro_sol_regulares")
 	private Date fechaFinSolRegular;
 	
 	public Ciclo(){}

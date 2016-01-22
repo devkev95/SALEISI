@@ -1,10 +1,28 @@
 package com.trabajotoo.saleisi.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "laboratorio")
 public class Laboratorio {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
+	
+	@Column(name = "cod_laboratorio", length = 8)
 	private String codLab;
+	
+	@Column(name = "capacidad")
 	private int capacidad;
+	
+	@Column(name = "estado")
 	private boolean estado;
 	
 	public Laboratorio(){}
