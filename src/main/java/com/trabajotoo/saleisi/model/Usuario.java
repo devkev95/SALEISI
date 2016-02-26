@@ -25,7 +25,7 @@ public class Usuario {
 	@Column(name = "nombre_usuario", length = 300)
 	private String nomUsuario;
 	
-	@Column(name = "password", length = 350)
+	@Column(name = "pass", length = 350)
 	private String password;
 	
 	@Column(name = "email", length = 250, unique = true)
@@ -40,6 +40,10 @@ public class Usuario {
 			orphanRemoval = true)
 	@JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")
 	private Set<MateriaAsignada> materiasAsignadas = new HashSet<MateriaAsignada>();
+	
+	@Column(name = "estado")
+	private boolean estado;
+	
 	
 	public Usuario(){}
 	
@@ -80,6 +84,19 @@ public class Usuario {
 		this.materiasAsignadas = materiasAsignadas;
 	}
 	
+	public void addMateria(MateriaAsignada matAsign){
+		this.materiasAsignadas.add(matAsign);
+	}
 	
+	public void addRol(RolAsignado rolAsign){
+		this.rolesAsignados.add(rolAsign);
+	}
 
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
 }

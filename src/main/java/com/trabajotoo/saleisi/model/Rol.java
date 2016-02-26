@@ -19,6 +19,9 @@ public class Rol {
 	@Column(name = "rol", length = 150)
 	private String rol;
 	
+	@Column(name = "codigo", length = 5)
+	private String codigo;
+	
 	public Rol(){}
 
 	public int getId() {
@@ -35,6 +38,14 @@ public class Rol {
 
 	public void setRol(String rol) {
 		this.rol = rol;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	
 

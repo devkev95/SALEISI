@@ -33,7 +33,7 @@ public class Solicitud {
 	@Column(name = "fecha_realizacion")
 	private Date fechaRealizada;
 	
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE} ,orphanRemoval = true)
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE} ,orphanRemoval = true)
 	@JoinColumn(name = "id_solicitud", referencedColumnName = "id_solicitud")
 	private Set<DetalleSolicitud> detallesSolicitud = new HashSet<DetalleSolicitud>();
 	
@@ -84,6 +84,19 @@ public class Solicitud {
 
 	public void setCicloRealizado(Ciclo cicloRealizado) {
 		this.cicloRealizado = cicloRealizado;
+	}
+	
+	public void addDetalle(DetalleSolicitud det){
+		this.detallesSolicitud.add(det);
+	}
+	
+	public void removeDetalle(long id){
+		for (DetalleSolicitud det: this.detallesSolicitud){
+			if(det.getId() == id){
+				this.detallesSolicitud.remove(det);
+				break;
+			}
+		}
 	}
 	
 	

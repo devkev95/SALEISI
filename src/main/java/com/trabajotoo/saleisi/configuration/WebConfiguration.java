@@ -1,3 +1,6 @@
+/**
+ * Clase en la cual se registra las configuraciones relacionadas con SpringMVC
+ */
 package com.trabajotoo.saleisi.configuration;
 
 import javax.annotation.Resource;
@@ -16,19 +19,21 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@Import({HibernateConfig.class})
-@ComponentScan(basePackages = "com.trabajotoo.saleisi.controllers")
+@Import(HibernateConfig.class)
+@ComponentScan("com.trabajotoo.saleisi.*")
 public class WebConfiguration extends WebMvcConfigurerAdapter{
 	
-	 @Resource
-     private Environment env;
+	@Resource
+    private Environment env;
 	
+	// Configuracion de los archivos css,js,etc.
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry){
 		registry.addResourceHandler("/resources/**")
 		.addResourceLocations("/resources/");
 	}
 	
+	// Configuracion del manejo de las vistas
 	@Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();

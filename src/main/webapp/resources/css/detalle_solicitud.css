@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+table{
+	font-size: 80%;
+}
+
+.button {
+	clear:both;
+	padding: 25px 7px 25px 7px;
+	display: block;
+}

@@ -1,3 +1,10 @@
+/**
+ * Configuracion de Hibernate y cuestiones relacionadas.
+ * En este caso en vez de usar la clase SessionFactory de Hibernate usamos
+ * EntityManager de JPA ya que es el estandar y nos permite cambiar de manera
+ * más facil de proveedor de JPA(Hibernate es un proveedor de JPA)
+ */
+
 package com.trabajotoo.saleisi.configuration;
 
 import java.util.Properties;
@@ -23,6 +30,7 @@ public class HibernateConfig {
 	@Resource
 	Environment env;
 	
+	//Configuracion del datasource de Apache Commons dbpc2
 	@Bean
 	public DataSource dataSource(){
 		BasicDataSource dataSource = new BasicDataSource();
@@ -34,6 +42,7 @@ public class HibernateConfig {
 		return dataSource;
 	}
 	
+	// Configuracion de las propiedades de Hibernate
 	private Properties hibProperties(){
 		Properties properties = new Properties();
 		properties.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
@@ -44,6 +53,8 @@ public class HibernateConfig {
 	    return properties; 
 	}
 	
+	// Registro del datasource, Hibernate y el paquete en el cual estan registradas
+	// las clases que representan el modelo de la BD 
 	@Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
             LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
@@ -56,6 +67,7 @@ public class HibernateConfig {
             return entityManagerFactoryBean;
     }
 	
+	// Configuracion del manejador de transaciones de la BD con JPA
 	@Bean
     public JpaTransactionManager transactionManager() {
             JpaTransactionManager transactionManager = new JpaTransactionManager();
